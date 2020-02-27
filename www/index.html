@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title></title>
+    </head>
+    <body ng-app="MyApp">
+	 <div ng-controller="MyCntrl">
+           
+
+        </div>
+       <script type="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+       <script type="text/javascript">
+         var app = angular.module("MyApp",[]);
+            app.controller('todoCtrl', function ($scope) {
+                $scope.todoList = [{ todoText: "Water the Garden", done: false },
+                    { todoText: "Buy Something", done: false }
+                ];
+
+                $scope.todoApp = function () {
+                    $scope.todoList.push({ todoText: $scope.todoInput, done: false });
+                    $scope.todoInput = "";
+                };
+
+                $scope.RemoveMe = function () {
+                    var OldList = $scope.todoList;
+                    $scope.todoList = [];
+                    angular.forEach(OldList,function (x) {
+                        if (!x.done) $scope.todoList.push(x);
+                    });
+
+                };
+
+               
+            });
+       </script>
+       
+       
+    </body>
+</html>
